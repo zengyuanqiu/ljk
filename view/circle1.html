@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<!--  圈子     -->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/reset.css" rel="stylesheet" />
+
+		<style>
+			.circle .img{
+				position: relative;
+				width: 100%;
+				padding-top: 65%;
+				background-image: url(../img/muwu.jpg);
+				background-size: cover;
+				background-position: 50% 50%;
+			}
+			.circle .img img{
+				position:absolute;
+				bottom: -20px;
+				right: 10px;
+				max-width: 70px;
+			}
+			
+			li{
+				list-style: none;
+			}
+			
+			.circle-info{
+				margin-top: 60px;
+				
+			}
+			.circle-item{
+				padding: 10px;
+				font-size: 14px;
+			}
+			.circle-item + .circle-item{
+				border-top: 1px solid rgba(200,200,200,.3);
+			}
+			.circle-item .photo{
+				margin-right: 10px;
+			}
+			.circle-item .content{
+				width: calc(100% - 50px);
+			}
+			.circle-item .main-content{
+				padding: 5px;
+				background: #f3f3f5;
+			}
+			
+			.camera-select{
+				position: fixed;
+				width: 100%;
+				bottom: 0;
+				text-align: center;
+				z-index: 1000;
+				background: #5D5D5F;
+			}
+			.camera-select li{
+				line-height: 50px;
+				background: #fff;
+			}
+			.camera-select li:first-child{
+				border-bottom: 1px solid rgba(200, 200, 200, .3);
+			}
+			.camera-select .cancel-btn{
+				margin-top: 5px;
+				height: 60px;
+				line-height: 60px;
+				background: #fff;
+			}
+		</style>
+		
+	</head>
+
+	<body>
+		<div class="circle">
+			<div class="mui-bar mui-bar-nav" style='box-shadow: 0 0 0;'>
+			    <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"
+					style="margin-left: 10px;color:#101010;">
+					<!--<span class="mui-icon mui-icon-left-nav"></span>-->返回
+				</button>
+
+			    <h1 class="mui-title">财友圈</h1>
+			    <a class="mui-pull-right camera-btn">
+					<span class="mui-icon mui-icon-camera" style='color: rgb(16,16,16);font-size: 28px;'></span>
+				</a>
+			</div>
+			<div class="mui-content" style='background: #fff;'>
+			    <div class="img">
+					<img src="../img/logo.png" width="70" height="70" alt="" />
+				</div>
+				<div class="circle-info">
+					<ul>
+						<li class="circle-item mui-clearfix">
+							<div class="photo mui-pull-left">
+								<img src="../img/logo.png" width="40" height="40" alt="" />
+							</div>
+							<div class="content mui-pull-left">
+								<div class="nickname">小样</div>
+								<div class="main-content">
+									最近研究了一下即时通讯模块，做了一个IM模板。
+									比较了融云等三方IM模块，最终选择了Leancloud，主要是灵活强大，可以任意定制。
+
+								</div>
+								<div class="mui-clearfix" style='padding-top: 10px;'>
+									<span class="mui-pull-left time">
+										3小时前
+									</span>
+									<span class="mui-pull-right">
+										<i class="mui-icon mui-icon-chatboxes"></i>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li class="circle-item mui-clearfix">
+							<div class="photo mui-pull-left">
+								<img src="../img/logo.png" width="40" height="40" alt="" />
+							</div>
+							<div class="content mui-pull-left">
+								<div class="nickname">小样</div>
+								<div class="main-content">
+									有一个棘手的问题是Android 4.4以下不支持WebSocket，不想用长轮询的方式workaround。
+									于是放弃了Leancloud的推送模块，把官方的个推集成进来替换推送模块。
+								</div>
+								<div class="mui-clearfix" style='padding-top: 10px;'>
+									<span class="mui-pull-left time">
+										3小时前
+									</span>
+									<span class="mui-pull-right">
+										<i class="mui-icon mui-icon-chatboxes"></i>
+									</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!--<div class="camera-select" hidden>
+			<ul>
+				<li>拍照</li>
+				<li>从相册选择</li>
+			</ul>
+			<div class="cancel-btn">
+				取消
+			</div>
+		</div>-->
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.min.js"></script>
+		<script type="text/javascript">
+			void function(doc) {
+				
+				mui.plusReady(function() {
+					mui.init()
+					
+					var mask = null
+					var cameraSelect = doc.querySelector('.camera-select')
+					doc.querySelector('.camera-btn').addEventListener('tap', function() {
+						var btnArray = [{
+							title: "拍照"
+						}, {
+							title: "从相册选择"
+						}];
+						plus.nativeUI.actionSheet({
+//							title: "选择照片",
+							cancel: "取消",
+							buttons: btnArray
+						}, function(e) {
+							var index = e.index;
+							switch (index) {
+								case 0:
+									break;
+								case 1:
+									var cmr = plus.camera.getCamera();
+									cmr.captureImage(function(path) {
+//										send({
+//											sender: 'self',
+//											type: 'image',
+//											content: "file://" + plus.io.convertLocalFileSystemURL(path)
+//										});
+									}, function(err) {});
+									break;
+								case 2:
+									plus.gallery.pick(function(path) {
+//										send({
+//											sender: 'self',
+//											type: 'image',
+//											content: path
+//										});
+									}, function(err) {}, null);
+									break;
+							}
+						});
+						
+					}, false)
+					
+					mui('.camera-select').on('tap', '.cancel-btn', function() {
+						$('.camera-select').css('display', 'none')
+						mask.close();
+					})
+				})
+			}(document)
+			
+		</script>
+	</body>
+
+</html>

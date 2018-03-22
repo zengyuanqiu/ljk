@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+	<!-- 添加好友    -->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.mui-search{
+				position: relative;
+				margin: 10px 0;
+				
+			}
+			.mui-search input{
+				padding-left: 56px;
+				border: 0;
+				border-bottom: 1px solid #d3d3d3;
+				border-top: 1px solid #d3d3d3;
+				border-radius: 0;
+				font-size: 14px;
+			}
+			.mui-search i.mui-icon{
+				position: absolute;
+				top: 7px;
+				left: 30px;
+				color: #72D072;
+			}
+			
+			/*手机联系人*/
+			.phone-contacts{
+				position: relative;
+				padding: 10px 12px;
+				width: 100%;
+				background: #fff;
+			}
+			.phone-contacts>div{
+				margin-left: 10px;
+				height: 42px;
+			}
+			
+			.title{
+				margin: 0;
+				font-size: 16px;
+				color: #333;
+			}
+			span.text{
+				font-size: 13px;
+				color: #8f8f94;
+			}
+			
+			.phone-contacts>i.mui-icon{
+				margin-top: 9px;
+				color: #666;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-bar mui-bar-nav" style='background: #fff;'>
+		    <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"
+				style="margin-left: 10px;color:#101010;">
+				取消
+			</button>
+		    <h1 class="mui-title">添加好友</h1>
+		    <button type="button" class="mui-btn mui-btn-link mui-pull-right"
+				style="margin-right: 10px;color:#101010;">
+				完成
+			</button>
+		</div>
+		<div class="mui-content">
+		    <div class="mui-input-row mui-search">
+		    	<i class="mui-icon mui-icon-search"></i>
+				<input type="text" class="mui-input-clear" placeholder="搜索电话号码" />
+			</div>
+			
+			<div class="phone-contacts mui-clearfix">
+				<img src="../img/logo.png" alt="" height="42" class="mui-pull-left" />
+				<div class="mui-pull-left">
+					<p class="title">手机联系人</p>
+					<span class="text">添加通讯录中的朋友</span>
+				</div>
+				<i class="mui-icon mui-icon-forward mui-pull-right"></i>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			void function() {
+				mui.init()
+				mui.plusReady(function() {
+					plus.contacts.getAddressBook( 0, function(e){
+						
+						console.log(JSON.stringify(e))
+					}, function() {} );
+				})
+			}()
+			
+		</script>
+	</body>
+
+</html>

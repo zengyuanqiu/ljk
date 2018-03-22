@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+	<!-- 新朋友 -->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_430355_ioza3q2shghc9pb9.css"/>
+		<style>
+			/*搜索框*/
+			.mui-search{
+				width: 96%;
+				margin: 10px auto;
+				text-align: center;
+			}
+			input[type='search'] {
+				background: #fff;
+			}
+			.mui-indexed-list-search{
+				border-bottom: 0;
+			}
+			
+			dt{
+				padding: 0 0px 5px 10px;
+				font-size: 14px;
+				color: #333;
+			}
+			
+			dd{
+				padding: 10px;
+				background: #fff;
+			}
+			dd + dd{
+				border-top: 1px solid #ddd;
+			}
+			img{
+				height: 42px;
+			}
+			.right{
+				position: relative;
+				padding-left: 10px;
+				width: calc(100% - 42px);
+				height: 42px;
+				line-height: 42px;
+			}
+			.right .mui-btn{
+				position: absolute;
+				top: 4px;
+				right: 0;
+			}
+			
+			.mui-btn.border-hide{
+				padding-right: 2px;
+				border: 0 none;
+				color: #999;
+			}
+			
+			.mui-btn.border-hide:enabled:active{
+				color: #999;
+				background: transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-bar mui-bar-nav">
+		     <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"
+				style="margin-left: 10px;color:#101010;">
+				返回
+				<!--<span class="mui-icon mui-icon-left-nav"></span>-->
+			</button>
+			<h1 class="mui-center mui-title">新的好友</h1>
+			<a class="mui-pull-right add-friend" 
+				style='margin-right:5px;padding-top:12px;height:44px;color:#101010;'>
+				<i class="iconfont icon-add-friend"></i>
+			</a>
+		</div>
+		<div class="mui-content">
+		    <div class="mui-indexed-list-search mui-input-row mui-search">
+				<input type="search" class="mui-input-clear mui-indexed-list-search-input key-hide" placeholder="搜索电话号码添加联系人">
+			</div>
+			<dl>
+				<dt>新朋友</dt>
+				<dd class="mui-clearfix">
+					<img src="../img/logo.png" alt="" class="mui-pull-left" />
+					<div class="right mui-pull-left">
+						<span class="nickname">Lilen</span>
+						<button type="button" class="mui-btn mui-btn-success">接受</button>
+					</div>
+				</dd>
+				<dd class="mui-clearfix">
+					<img src="../img/logo.png" alt="" class="mui-pull-left" />
+					<div class="right mui-pull-left">
+						<span class="nickname">Lilen</span>
+						<button type="button" class="mui-btn">添加</button>
+					</div>
+				</dd>
+				<dd class="mui-clearfix">
+					<img src="../img/logo.png" alt="" class="mui-pull-left" />
+					<div class="right mui-pull-left">
+						<span class="nickname">Lilen</span>
+						<button type="button" class="mui-btn border-hide">已添加</button>
+					</div>
+				</dd>
+				<dd class="mui-clearfix">
+					<img src="../img/logo.png" alt="" class="mui-pull-left" />
+					<div class="right mui-pull-left">
+						<span class="nickname">Lilen</span>
+						<button type="button" class="mui-btn mui-btn-success">接受</button>
+					</div>
+				</dd>
+			</dl>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			
+			void function() {
+				mui.init();
+				mui.plusReady(function() {
+					mui('.add-friend')[0].addEventListener('tap', function() {
+						console.log('2')
+						mui.openWindow({
+							url: 'add-friend.html',
+							id: 'add-friend.html',
+							styles: {
+								
+							}
+						})
+					}, false)
+				})
+				
+			}()
+		</script>
+	</body>
+
+</html>

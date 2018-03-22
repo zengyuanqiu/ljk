@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<!--  群组列表     -->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			
+			/*下边框铺满整个屏幕*/
+			.mui-table-view-cell:after{
+				left: 0;
+			}
+			
+			.msg-list .mui-table-view-cell{
+				padding-top: 9px;
+				height: 76px;
+			}
+			
+			.mui-table-view .mui-media-object {
+			    line-height: 60px;
+			    max-width: 60px;
+			    height: 60px;
+			}
+			
+			
+			/*列表上边框*/
+			.mui-table-view:before{
+				/*height: 0;*/
+			}
+			
+			/*群名*/
+			.group-name{
+				display: inline-block;
+				line-height: 60px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"
+				style="margin-left: 10px;color:#101010;">返回
+				<!--<span class="mui-icon mui-icon-left-nav"></span>-->
+			</button>
+		    <h1 class="mui-title">选择一个群</h1>
+		</header>
+		<div class="mui-content">
+			<div class="msg-list">
+				<ul class="mui-table-view chat-list">
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="../img/logo.png" width='60' height="60">
+				            <div class="mui-media-body">
+				            	<span class="group-name">同学群</span>
+				            </div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="../img/logo.png" width='60' height="60">
+				            <div class="mui-media-body">
+				            	<span class="group-name">好友群</span>
+				            </div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="../img/logo.png" width='60' height="60">
+				            <div class="mui-media-body">
+				            	<span class="group-name">同事群</span>
+				            </div>
+				        </a>
+				    </li>
+				</ul>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			void function(doc) {
+				mui.init();
+				mui.plusReady(function() {
+					mui('.chat-list').on('tap', 'li', function() {
+						console.log($(this).index())
+						mui.openWindow({
+							url: 'im-chat.html',
+							id: 'im-chat.html',
+							styles: {
+								
+							}
+						})
+					})
+					
+					mui('.chat-list').on('tap', 'li', function() {
+						mui.openWindow({
+							url: 'im-chat.html',
+							id: 'im-chat.html',
+							styles: {
+								
+							}
+						})
+	
+					})
+				})
+			}(document)
+			
+		</script>
+	</body>
+
+</html>

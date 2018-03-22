@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.time{
+				margin-top: 5px;
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			
+			/*下边框铺满整个屏幕*/
+			.mui-table-view-cell:after{
+				left: 0;
+			}
+			
+			.msg-list .mui-table-view-cell{
+				padding-top: 9px;
+				height: 76px;
+			}
+			
+			.mui-table-view .mui-media-object {
+			    line-height: 60px;
+			    max-width: 60px;
+			    height: 60px;
+			}
+			
+			.nickname{
+				display: inline-block;
+				margin-top: 6px;
+			}
+			
+			.mui-table-view-cell p{
+				margin-top: 8px;
+			}
+			
+			/*搜索框*/
+			.mui-search{
+				width: 96%;
+				margin: 8px auto 0;
+				text-align: center;
+			}
+			
+			input[type='search'] {
+				background: #fff;
+			}
+			
+			/*列表上边框*/
+			.mui-table-view:before{
+				/*height: 0;*/
+			}
+			
+			.mui-search .mui-placeholder{
+				
+			}
+			
+			.add-btn{
+				position: fixed;
+				/*bottom: 80px;*/
+				top: -36px;
+				right: 12px;
+			}
+			
+			/*  添加弹出  */
+	    	#add{
+	    		width: 140px;
+	    	}
+	    	
+	    	#add .mui-table-view-cell:after{
+				left: 15px;
+				right: 15px;
+				opacity: .5;
+			}
+			
+			/*下拉菜单三角*/
+		
+			.mui-popover .mui-popover-arrow:after{
+				background: #49484B;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active{
+				background: #49484B;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="msg-list">
+			<div class="mui-input-row mui-search">
+				<input type="search" class="mui-input-clear" placeholder="搜索电话号码添加联系人">
+			</div>
+			<ul class="mui-table-view chat-list" style='margin-top:-7px;'>
+			    <li class="mui-table-view-cell mui-media">
+			        <a href="javascript:;">
+			            <img class="mui-media-object mui-pull-left" src="../img/logo.png" width='60' height="60">
+			            <div class="mui-media-body">
+			                <span class="nickname">幸福</span><span class="time mui-pull-right">昨天</span>
+			                <p class="mui-ellipsis">能和心爱的人一起是件幸福的事情</p>
+			            </div>
+			        </a>
+			    </li>
+			    <li class="mui-table-view-cell mui-media">
+			        <a href="javascript:;">
+			            <img class="mui-media-object mui-pull-left" src="../img/logo.png" width='60' height="60">
+			            <div class="mui-media-body">
+			               	<span class="nickname">幸福</span><span class="time mui-pull-right">昨天</span>
+			                <p class="mui-ellipsis">想要这样一间小木屋.</p>
+			            </div>
+			        </a>
+			    </li>
+			    <li class="mui-table-view-cell mui-media">
+			        <a href="javascript:;">
+			            <img class="mui-media-object mui-pull-left" src="../img/logo.png" width='60' height="60">
+			            <div class="mui-media-body">
+			                <span class="nickname">幸福</span><span class="time mui-pull-right">昨天</span>
+			                <p class="mui-ellipsis">烤炉模式.</p>
+			            </div>
+			        </a>
+			    </li>
+			</ul>
+		</div>
+		
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			void function(doc) {
+				mui.init();
+				mui.plusReady(function() {
+					mui('.chat-list').on('tap', 'li', function() {
+						console.log($(this).index())
+						mui.openWindow({
+							url: 'im-chat.html',
+							id: 'im-chat.html',
+							styles: {
+								
+							}
+						})
+					})
+				})
+			}(document)
+			
+		</script>
+	</body>
+
+</html>

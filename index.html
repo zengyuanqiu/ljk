@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <style>
+    	html,body, #im{
+    		height: 100%;
+    	}
+    	#add{
+    		width: 140px;
+    	}
+    	
+    	
+    	.mui-bar {
+		    -webkit-box-shadow: 0 0 0; 
+		    box-shadow: 0 0 0; 
+		}
+		
+		/*时间*/
+		.time{
+			padding-bottom: 10px;
+			/*margin-top: 5px;*/
+			font-size: 14px;
+			color: #8f8f94;
+		}
+		
+		/*下边框铺满整个屏幕*/
+		.mui-table-view-cell:after{
+			left: 0;
+		}
+		
+		/*搜索框*/
+		.mui-search{
+			width: 96%;
+			margin: 8px auto 0;
+			text-align: center;
+		}
+		
+		input[type='search'] {
+			background: #fff;
+		}
+		
+		#add .mui-table-view-cell:after{
+			left: 15px;
+			right: 15px;
+			opacity: .5;
+		}
+		
+		/*下拉菜单三角*/
+		
+		.mui-popover .mui-popover-arrow:after{
+			background: #49484B;
+		}
+		
+		.mui-table-view-cell>a:not(.mui-btn).mui-active{
+			background: #49484B;
+		}
+    </style>
+    
+</head>
+<body id='body'>
+	<div id="im" style='position: relative;z-index: 99;'>
+		<header class="mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-btn  mui-btn-link mui-btn-nav mui-pull-left quit"
+				style="margin-left: 10px;color:#101010;">返回
+				<!--<span class="mui-icon mui-icon-left-nav"></span>-->
+			</button>
+		    <!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+		    <h1 class="mui-title">我的聊天</h1>
+		    <a class="mui-pull-right" href="#add" id='open-add'>
+				<span class="mui-icon mui-icon mui-icon-plusempty" style='color: rgb(16,16,16);font-size: 28px;'></span>
+			</a>
+		</header>
+		<div class="mui-content">
+		    <div class="msg-list">
+				<div class="mui-input-row mui-search">
+					<input type="search" class="mui-input-clear key-hide" placeholder="搜索电话号码添加联系人">
+				</div>
+				<ul class="mui-table-view chat-list" style='margin-top:-7px;'>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="./img/logo.png" width='60' height="60">
+				            <div class="mui-media-body">
+				                <span class="nickname">幸福</span><span class="time mui-pull-right">昨天</span>
+				                <p class="mui-ellipsis">能和心爱的人一起是件幸福的事情能和心爱的人一起是件幸福的事情</p>
+				            </div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="./img/logo.png" width='60' height="60">
+				            <div class="mui-media-body">
+				               	<span class="nickname">幸福</span><span class="time mui-pull-right">昨天</span>
+				                <p class="mui-ellipsis">想要这样一间小木屋.</p>
+				            </div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="./img/logo.png" width='60' height="60">
+				            <div class="mui-media-body">
+				                <span class="nickname">幸福</span><span class="time mui-pull-right">昨天</span>
+				                <p class="mui-ellipsis">烤炉模式.</p>
+				            </div>
+				        </a>
+				    </li>
+				    <chat-list :list='list'></chat-list>
+				</ul>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item mui-active" href="index.html">
+		        <span class="mui-icon mui-icon mui-icon-chat"></span>
+		        <span class="mui-tab-label">消息</span>
+		    </a>
+		    <a class="mui-tab-item" href="view/contacts.html">
+		        <span class="mui-icon mui-icon-phone"></span>
+		        <span class="mui-tab-label">联系人</span>
+		    </a>
+		    <a class="mui-tab-item" href="view/circle.html">   
+		        <span class="mui-icon mui-icon mui-icon-pengyouquan"></span>
+		        <span class="mui-tab-label">财友圈</span>
+		    </a>
+		</nav>
+		
+	</div>
+	<div id="add" class="mui-popover">
+		<div class="mui-scroll-wrapper" style="overflow: visible;z-index: 1001;">
+		    <div class="mui-scroll" style='top:-12px;'>
+			    <ul class="mui-table-view" 
+			    	style='color:#eee;border-radius:3px;background: #49484B;text-align: center;'>
+			    	<li class="mui-table-view-cell"><a href="#">发起群聊</a></li>
+			    	<li class="mui-table-view-cell"><a href="#">添加朋友</a></li>
+			    	<li class="mui-table-view-cell"><a href="#">设置</a></li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+
+	<script src="./js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="components/chat-list.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		void function(doc) {
+			function getHtmlFontSize() {
+				var w = window.innerWidth;
+				var html = document.getElementsByTagName('html')[0];
+				html.style.fontSize = w / 20 + 'px'
+			}
+			 
+			window.onload = function() {
+				getHtmlFontSize();
+				
+			}
+	
+			window.onresize = function() {
+				getHtmlFontSize();
+			} 
+			 
+			var add = new Vue({
+				el: '#add',
+				data: function() {
+					return {}
+				},
+				
+				mounted: function() {
+//					console.log(this)
+				}
+			})
+			
+			var str = '约吗？';
+			var vm = new Vue({
+				el: '#im',
+				data: function(){
+					return {
+						list: {
+							imgUrl: './img/logo.png',
+							chatName: 'Good',
+							lastMsg: str,
+							time: '03-18 20:26'
+						}
+					}
+				},
+				created: function() {
+
+				},
+				methods: {
+//					keyHide: function() {
+//						$('.mui-bar-tab').css('display', 'none')
+//					}
+				},
+				
+				mounted: function(){
+					var viewId = 0;
+					mui.plusReady(function() {
+						mui.init();
+						mui('.mui-bar-tab .mui-tab-item').each(function(i) {
+							this.addEventListener('tap', function() {
+								switch(i) {
+									case 0: 
+										viewId = i
+										mui.openWindow({
+											url: 'index.html',
+											id: 'index.html'
+										})
+									break
+									
+									case 1:
+										viewId = i
+										mui.openWindow({
+											url: 'view/contacts.html',
+											id: 'view/contacts.html',
+											styles: {
+												top: 0,
+												bottom: '49px'
+											} 
+										})
+									break
+									
+									case 2:
+										var _this = this
+										mui.openWindow({
+											url: 'view/circle.html',
+											id: 'view/circle.html',
+											styles: {
+												top: 0,
+												bottom: 0
+											}
+										})
+										setTimeout(function() {
+											_this.classList.remove('mui-active')
+											mui('.mui-bar-tab .mui-tab-item')[viewId].classList.add('mui-active')
+										}, 300)
+									break	
+								}
+							})
+						})
+						
+						mui('.chat-list').on('tap', 'li', function() {
+							mui.openWindow({
+								url: 'view/im-chat.html',
+								id: 'view/im-chat.html',
+								styles: {
+									
+								}
+							})
+		
+						})
+						
+						mui('#add').on('tap', 'li', function() {
+							console.log('1')
+							var idx = $(this).index()
+							switch(idx) {
+								case 0:
+									mui.openWindow({
+										url: 'view/smagc.html',
+										id: 'view/smagc.html',
+										styles: {
+											
+										}
+									})
+								break;
+								
+								case 1:
+									mui.openWindow({
+										url: 'view/add-friend.html',
+										id: 'view/add-friend.html',
+										styles: {
+											
+										}
+									})
+								break;
+								
+								case 2:
+		
+									mui.openWindow({
+										url: 'view/setting.html',
+										id: 'view/setting.html',
+										styles: {
+											
+										}
+									})
+								break;
+							}
+							
+							mui('#add').popover('hide')
+							
+						})
+		
+						$('.key-hide').focus(function() {
+							$('.mui-bar-tab').css('display', 'none')
+						}).blur(function() {
+							$('.mui-bar-tab').css('display', 'table')
+						})
+						
+						// 返回键退出应用
+						var firstTapTime = null
+						mui('.quit')[0].addEventListener('tap', function() {
+							if (!firstTapTime) {
+								firstTapTime = new Date().getTime();
+								mui.toast('再按一次退出应用');
+								setTimeout(function() {
+									firstTapTime = null;
+								}, 2000);
+							} else {
+								if (new Date().getTime() - firstTapTime < 2000) {
+									plus.runtime.quit();
+								}
+							}
+						})
+					})
+				},
+				components: {
+					'chat-list': chatList
+				}
+			})
+		}(document);
+    </script>
+</body>
+</html>

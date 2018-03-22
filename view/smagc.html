@@ -1,0 +1,405 @@
+<!doctype html>
+<html>
+	<!-- 选择好友添加群聊  文件名是单词首字母 s:select, m:member, a:add, g:group, c:chat-->
+	
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/mui.indexedlist.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<style>
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			.mui-content{
+				font-size: 14px;				
+			}
+			/*搜索框*/
+			.mui-search{
+				width: 96%;
+				margin: 15px auto 0;
+				text-align: center;
+			}
+			input[type='search'] {
+				background: #fff;
+			}
+			
+			.select-group{
+				padding: 10px;
+				/*font-size: 0;*/
+				background: #fff;
+			}
+			.select-group .icon-box{
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 8px;
+				width: 42px;
+				height: 42px;
+				text-align: center;
+				line-height: 42px;
+				border-radius: 3px;
+				background: #339900;
+			}
+			.select-group .icon-box .mui-icon{
+				color: #fff;
+			}
+			
+			/*联系人昵称*/
+			.name-wrap{
+				line-height: 42px;
+			}
+			
+			/*联系人头像*/
+			.contact-img{
+				vertical-align: middle;
+				margin-right: 10px;
+				width: 42px;
+				height: 42px;
+			}
+			
+			/* 上边框 */
+			.mui-table-view:before{
+				height: 0;
+			}
+			/*字母索引*/
+			.mui-indexed-list-bar{
+				margin: auto;
+				top: 0px;
+				bottom: 0;
+				background: transparent;
+			}
+			.mui-indexed-list-bar a{
+				color: #666;
+			}
+			
+			
+			/*dt.index{
+				padding: 0px 15px;
+				background-color: rgb(240, 240, 242);
+
+			}*/
+			
+			.mui-table-view-cell{
+				padding: 0;
+			}
+			
+			.mui-table-view-divider{
+				padding: 2px 15px;
+				background: #EFEFF4;
+			} 
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after{
+				height: 0;
+			}
+			/*下边框铺满整个屏幕*/
+			.mui-table-view-cell:after{
+				left: 0;
+			}
+			/*搜索框*/
+			.mui-search{
+				width: 96%;
+				margin: 10px auto;
+				text-align: center;
+			}
+			input[type='search'] {
+				background: #fff;
+			}
+			.mui-indexed-list-search{
+				border-bottom: 0;
+			}
+			
+			.mui-table-view .mui-media-object {
+			    line-height: 32px;
+			    max-width: 32px;
+			    height: 32px;
+			}
+			
+			/*label标签*/
+			.mui-checkbox.mui-left label{
+				padding-left: 48px;
+			}
+			.mui-checkbox input[type=checkbox]:checked:before{
+			    color: #339900;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-bar mui-bar-nav" style='box-shadow:0 0 0'>
+		    <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"
+				style="margin-left: 10px;color:#101010;">
+				取消
+				<!--<span class="mui-icon mui-icon-left-nav"></span>-->
+			</button>
+			<h1 class="mui-center mui-title">选择联系人</h1>
+			<a class="mui-pull-right" style='margin-right:5px;padding-top:12px;height:44px;color:#101010;'>
+				完成
+			</a>
+		</div>
+		<div class="mui-content">
+			<div id="mem-list" class="mui-indexed-list">
+				<div class="mui-indexed-list-bar" style='z-index: 16;'>
+					<a>A</a>
+					<a>B</a>
+					<a>C</a>
+					<a>D</a>
+					<a>E</a>
+					<a>F</a>
+					<a>G</a>
+					<a>H</a>
+					<a>I</a>
+					<a>J</a>
+					<a>K</a>
+					<a>L</a>
+					<a>M</a>
+					<a>N</a>
+					<a>O</a>
+					<a>P</a>
+					<a>Q</a>
+					<a>R</a>
+					<a>S</a>
+					<a>T</a>
+					<a>U</a>
+					<a>V</a>
+					<a>W</a>
+					<a>X</a>
+					<a>Y</a>
+					<a>Z</a>
+				</div>
+			    <div class="mui-indexed-list-alert"></div>
+			    
+			    <div class="mui-indexed-list-inner">
+			    	<div class="mui-indexed-list-empty-alert">没有数据</div>
+			    	<div class="mui-indexed-list-search mui-input-row mui-search">
+						<input type="search" class="mui-input-clear mui-indexed-list-search-input key-hide" placeholder="搜索电话号码添加联系人">
+					</div>
+					<div class="select-group">
+						<span class="icon-box">
+							<i class="mui-icon mui-icon-person"></i>
+						</span>选择一个群
+					</div>
+					
+					<dl class="mui-table-view">
+						<dt data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</dt>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for='che1'>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">阿宝</span>
+							  	</label>
+							  	<input name="checkbox1" id='che1' type="checkbox" checked style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for='che2'>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">阿2</span>
+							  	</label>
+							  	<input name="checkbox1" id='che2' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dt data-group="B" class="mui-table-view-divider mui-indexed-list-group">B</dt>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for='che3'>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">包青天</span>
+							  	</label>
+							  	<input name="checkbox1" id='che3' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for='che4'>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">贝壳</span>
+							  	</label>
+							  	<input name="checkbox1" id='che4' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dt data-group="C" class="mui-table-view-divider mui-indexed-list-group">C</dt>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">cc</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for='che2'>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">c2</span>
+							  	</label>
+							  	<input name="checkbox1" id='che2' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dt data-group="D" class="mui-table-view-divider mui-indexed-list-group">D</dt>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">d1</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">d2</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dt data-group="E" class="mui-table-view-divider mui-indexed-list-group">E</dt>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">ee</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">eee</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dt data-group="F" class="mui-table-view-divider mui-indexed-list-group">F</dt>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">f</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">ff</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">f</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">ff</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">f</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">ff</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">f</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+						<dd class="mui-table-view-cell mui-media">
+							<div class="mui-input-row mui-checkbox mui-left">
+							 	<label for=''>
+							 		<img class="contact-img" src="../img/logo.png" alt="" />
+						            <span class="nickname">ff</span>
+							  	</label>
+							  	<input name="checkbox1" id='' type="checkbox" style='left:8px;top:16px;' />
+							</div>
+						</dd>
+					</dl>
+			    </div>
+			    
+				
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.indexedlist.js"></script>
+		<script type="text/javascript">
+			void function(doc) {
+				mui.init()
+				mui.plusReady(function() {
+					mui('.select-group')[0].addEventListener('tap', function() {
+						mui.openWindow({
+							url: 'group-list.html',
+							id: 'group-list.html'
+						})
+					})
+				})
+				
+				mui.ready(function() {
+					var header = doc.querySelector('div.mui-bar');
+					var memList = doc.getElementById('mem-list');
+					//calc hieght
+					memList.style.height = (doc.body.offsetHeight - header.offsetHeight) + 'px';
+					//create
+					window.indexedList = new mui.IndexedList(memList);
+					
+					// 改写scrollTo
+					window.indexedList.scrollTo = function(group) {
+						var self = this;
+						var groupElement = self.el.inner.querySelector('[data-group="' + group + '"]');
+						if (!groupElement || (self.hiddenGroups && self.hiddenGroups.indexOf(groupElement) > -1)) {
+							return;
+						}
+						self.el.inner.scrollTop = groupElement.offsetTop + 116;
+					}
+				});
+				
+				$('.key-hide').focus(function() {
+					$('.mui-indexed-list-bar').css('display', 'none')
+				}).blur(function() {
+					$('.mui-indexed-list-bar').css('display', 'table')
+				})
+			}(document)
+			
+		</script>
+	</body>
+
+</html>
