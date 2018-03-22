@@ -1,2 +1,2 @@
-# http://www.baidu.com
+# 可链接
 学习了
