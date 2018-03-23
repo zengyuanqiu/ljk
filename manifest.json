@@ -237,7 +237,9 @@
 					"img/logo.png",
 					"js/zepto.min.js"
 				],
-				"refer": [],
+				"refer": [
+					"view/friend-info.html"
+				],
 				"priority": 0
 			},
 			"view/contacts.html": {
@@ -253,7 +255,8 @@
 				"refer": [
 					"view/add-friend.html",
 					"view/group-list.html",
-					"view/new-friend.html"
+					"view/new-friend.html",
+					"view/friend-info.html"
 				],
 				"priority": 0
 			},
@@ -278,7 +281,9 @@
 					"js/zepto.min.js",
 					"index.html"
 				],
-				"refer": [],
+				"refer": [
+					"view/group-setting.html"
+				],
 				"priority": 0
 			},
 			"view/smagc.html": {
@@ -334,6 +339,14 @@
 				"resources": [],
 				"refer": [
 					"view/add-friend.html"
+				],
+				"priority": 0
+			},
+			"view/group-setting.html": {
+				"resources": [],
+				"refer": [
+					"view/friend-info.html",
+					"view/smagc.html"
 				],
 				"priority": 0
 			}

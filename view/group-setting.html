@@ -9,6 +9,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_430355_sv5e79xdd6gycik9.css"/>
 		<style>
 			html,
 			body {
@@ -187,6 +188,50 @@
 			.mui-table-view-cell:after{
 				left: 0;
 			}
+			
+			
+			/*二维码*/
+			#qr-code .box{
+				position: absolute;
+				margin: 0 auto;
+				padding: 10px;
+				width: calc( 100% - 48px );
+				top: 50%;
+				left: 0;
+				right: 0;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+				background: #fff;
+			}
+			
+			#qr-code .box .top .group-img{
+				display: inline-block;
+				vertical-align: top;
+				margin-right: 5px;
+				width: 60px;
+				height: 60px;
+				border: 1px solid #ddd;
+			}
+			#qr-code .box .code-box{
+				padding: 24px 12px;
+			}
+			
+			/*群公告*/
+			.notice-msg{
+				width: 100%;
+				height: 100%;
+				border: 0;
+				resize: none;
+			}
+			
+			/*投诉*/
+			.mui-checkbox>label{
+				border-bottom: 1px solid #ddd;
+				background: #fff;
+			}
+			.mui-checkbox:first-child{
+				border-top: 1px solid #ddd;
+			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="../css/feedback.css" />
 	</head>
@@ -218,7 +263,7 @@
 			<div class="mui-page-content">
 				<div class="mui-scroll-wrapper">
 					<div class="mui-scroll">
-						<ul class="mui-table-view mui-table-view-chevron" style='margin-top:0;font-size: 0;padding:20px 10px 0;'>
+						<ul class="mui-table-view mui-table-view-chevron mem-box" style='margin-top:0;font-size: 0;padding:20px 10px 0;'>
 							<li class='mem-img'>
 								<img src="../img/logo.png" alt="" width='50' height="50"/>
 								<span  class="nickname">阿粉</span>
@@ -251,39 +296,47 @@
 								<img src="../img/logo.png" alt="" width='50' height="50"/>
 								<span  class="nickname">阿粉</span>
 							</li>
-							<li class='mem-img'>
+							<li class='mem-img break'>
 								<div class="add-mem" 
 									style='width:50px;height:50px;margin:0 auto;line-height: 48px;text-align: center;border:1px solid #bbb;border-radius:5px;'>
 									<span class="mui-icon mui-icon mui-icon-plusempty" 
-										style='color: rgb(16,16,16);font-size: 50px;'></span>
+										style='color: rgb(16,16,16);font-size: 48px;'></span>
 								</div>
 							</li>
 						</ul>
 						
 						<ul class="mui-table-view mui-table-view-chevron">
-							<li class="mui-table-view-cell">
-								<a href="#notifications" class="mui-navigate-right">群聊名称<i class="mui-pull-right update">大家群</i></a>
+							<li class="mui-table-view-cell open-prompt" data-id='1'>
+								<span class="mui-navigate-right">
+									群聊名称<i class="mui-pull-right update">大家群</i>
+								<span>
 							</li>
 							<li class="mui-table-view-cell">
-								<a href="#privacy" class="mui-navigate-right">群二维码</a>
+								<a href="#qr-code" class="mui-navigate-right">群二维码</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a href="#general" class="mui-navigate-right">群公告</a>
+								<!--群主才有权限-->
+								<a href="#notice" class="mui-navigate-right">群公告</a>
 							</li>
+							<!--<li class="mui-table-view-cell">
+								群主才有权限
+								<a href="#general" class="mui-navigate-right">群管理</a>
+							</li>-->
 						</ul>
 						<ul class="mui-table-view mui-table-view-chevron">
-							<li class="mui-table-view-cell">
-								<a href="#account" class="mui-navigate-right">我在本群的昵称
+							<li class="mui-table-view-cell open-prompt">
+								<!--#account-->
+								<span class="mui-navigate-right">我在本群的昵称
 									<i class="mui-pull-right update">台肖杰</i>
-								</a>
+								</span>
 							</li>
 							<li class="mui-table-view-cell">
 								<a href="#account" class="mui-navigate-right">投诉</a>
 							</li>
 						</ul>
 						<ul class="mui-table-view mui-table-view-chevron">
-							<li class="mui-table-view-cell">
-								<a href="#about" class="mui-navigate-right">清除聊天记录</a>
+							<li class="mui-table-view-cell open-confirm">
+								<span class="mui-navigate-right">清除聊天记录</span>
 							</li>
 						</ul>
 						<button type='button' class="mui-btn mui-btn-danger" 
@@ -293,132 +346,89 @@
 			</div>
 			<!--页面主内容区结束-->
 		</div>
+		
 		<!--单页面结束-->
+		<div id="qr-code" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" 
+					class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"
+					style="margin-left: 10px;color:#101010;">
+					返回
+				</button>
+				<h1 class="mui-center mui-title">群二维码名片</h1>
+				<!--<span class="mui-icon mui-icon-more mui-pull-right"></span>-->
+			</div>
+			<div class="mui-page-content">
+				<div class="box">
+					<div class="top" style="line-height: 60px;">
+						<div class="group-img">
+							
+						</div>
+						大家群
+					</div>
+					<div class="code-box">
+						<img src="../img/code.png" style='width: 100%;' />
+					</div>
+					<p style='font-size: 12px;color:#999;text-align: center;'>
+						该二维码7天内有效,重新进入将更新
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="notice" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" 
+					class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"
+					style="margin-left: 10px;color:#101010;">
+					返回
+				</button>
+				<h1 class="mui-center mui-title">群公告</h1>
+				<span class="mui-icon mui-pull-right open-confirm">
+					<i class="iconfont icon-fabu"></i>
+				</span>
+			</div>
+			<div class="mui-page-content">
+				<textarea name="notice" 
+					class="notice-msg"
+					placeholder="请编辑群公告"
+					autofocus>
+				</textarea>
+			</div>
+		</div>
 		<div id="account" class="mui-page">
 			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>设置
+				<button type="button" 
+					class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"
+					style="margin-left: 10px;color:#101010;">
+					返回
 				</button>
-				<h1 class="mui-center mui-title">账号与安全</h1>
+				<h1 class="mui-center mui-title">投诉</h1>
 			</div>
 			<div class="mui-page-content">
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-								<a id="head" class="mui-navigate-right">头像
-								<span class="mui-pull-right head">
-									<img class="head-img mui-action-preview" id="head-img1" src=""/>
-								</span>
-							</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a>姓名<span class="mui-pull-right">Hbuilder</span></a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a>HBuilder账号<span class="mui-pull-right">hbuilder@dcloud.io</span></a>
-							</li>
-						</ul>
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-								<a>QQ号<span class="mui-pull-right">88888888</span></a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a>手机号<span class="mui-pull-right">18601234567</span></a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a>邮箱地址<span class="mui-pull-right">hbuilder@dcloud.io</span></a>
-							</li>
-						</ul>
-					</div>
+				<div style='padding:5px 15px;font-size:14px;color:#666;'>
+					请选择投诉该群(账号)的原因
 				</div>
-			</div>
-		</div>
-		<div id="notifications" class="mui-page">
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>设置
+				<div class="mui-input-row mui-checkbox">
+				  <label>发布不适应内容对我造成骚扰</label>
+				  <input name="checkbox1" value="Item 1" type="checkbox">
+				</div>
+				<div class="mui-input-row mui-checkbox">
+				  <label>存在欺诈骗钱行为</label>
+				  <input name="checkbox1" value="Item 2" type="checkbox">
+				</div>
+				<div class="mui-input-row mui-checkbox">
+				  <label>此账号可能被盗用了</label>
+				  <input name="checkbox1" value="Item 3" type="checkbox">
+				</div>
+				<div class="mui-input-row mui-checkbox">
+				  <label>发布仿冒品信息</label>
+				  <input name="checkbox1" value="Item 4" type="checkbox">
+				</div>
+				<button type="button" 
+					class="mui-btn mui-btn-success mui-btn-block"
+					style="margin:30px auto 0;width:calc( 100% - 40px );">
+					提交信息
 				</button>
-				<h1 class="mui-center mui-title">新消息通知</h1>
-			</div>
-			<div class="mui-page-content">
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-								<a>接收新消息通知<span class="mui-pull-right">已开启</span></a>
-							</li>
-						</ul>
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-								通知显示消息详情
-								<div class="mui-switch mui-active mui-switch-mini">
-									<div class="mui-switch-handle"></div>
-								</div>
-							</li>
-						</ul>
-						<div class="mui-content-padded">
-							<p>若关闭，当收到新消息时，通知提示将不显示发信人和内容摘要</p>
-						</div>
-
-						<ul class="mui-table-view mui-table-view-chevron">
-							<li class="mui-table-view-cell">
-								<a href="#notifications_disturb" class="mui-navigate-right">功能消息免打扰</a>
-							</li>
-						</ul>
-						<div class="mui-content-padded">
-							<p>设置系统功能消息提示声音和震动的时段</p>
-						</div>
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-								<a>接收新消息通知<span class="mui-pull-right">已开启</span></a>
-							</li>
-						</ul>
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-								声音
-								<div class="mui-switch mui-active mui-switch-mini">
-									<div class="mui-switch-handle"></div>
-								</div>
-							</li>
-							<li class="mui-table-view-cell">
-								震动
-								<div class="mui-switch mui-active mui-switch-mini">
-									<div class="mui-switch-handle"></div>
-								</div>
-							</li>
-						</ul>
-						<div class="mui-content-padded">
-							<p>当HelloMUI在运行时，你可以设置是否需要声音或者震动</p>
-						</div>
-						<div></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="notifications_disturb" class="mui-page">
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>新消息通知
-				</button>
-				<h1 class="mui-center mui-title">功能消息免打扰</h1>
-			</div>
-			<div class="mui-page-content">
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<ul class="mui-table-view mui-table-view-radio">
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">开启</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">只在夜间开启</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">关闭</a>
-							</li>
-						</ul>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div id="privacy" class="mui-page">
@@ -614,6 +624,57 @@
 	<script src='../js/feedback.js'></script>
 	<script>
 		mui.init();
+		
+		// 弹出输入框
+		mui('.mui-page-content').on('tap', '.open-prompt', function() {
+			var id = this.dataset.id,
+				title = id ? '群聊名称' : '我在本群的昵称',
+				val = id ? '大家群' : '台肖杰';
+			mui.prompt(
+				'',
+				val,
+				title,
+				['取消', '确定'],
+				function(v) {
+					console.log(v)
+				},
+				'div'
+				)
+		}, false)
+		
+		// 打开好友资料页面
+		mui('.mem-box').on('tap', '.mem-img', function() {
+			if(this.classList.length > 1) return
+			mui.openWindow({
+				url: 'friend-info.html',
+				id: 'friend-info.html',
+				extras: {}
+			})
+		}, false)
+		
+		// 弹出确认框
+		mui('.open-confirm').each(function(i) {
+			
+			this.addEventListener('tap', function() {
+				var title = i ? '该公告会通知全部群成员, 是否发布?' : '确定清空聊天记录?'
+				var btn = i ? '发布' : '清空'
+				mui.confirm(
+					'',
+					title,
+					['取消', '<span style="color:#090;">'+btn+'</span>'],
+					function() {},
+					'div'
+				)
+			}, false)
+		})
+		
+		mui('.add-mem')[0].addEventListener('tap', function(){
+			mui.openWindow({
+				url: 'smagc.html',
+				id: 'smagc.html',
+				extras: {}
+			})
+		}, false)
 		
 		//初始化单页view
 		var viewApi = mui('#app').view({
@@ -899,9 +960,9 @@
 //			}
 			
 		}
-		document.getElementById("head-img1").addEventListener('tap', function(e) {
-			e.stopPropagation();
-		});
+//		document.getElementById("head-img1").addEventListener('tap', function(e) {
+//			e.stopPropagation();
+//		});
 		document.getElementById("welcome").addEventListener('tap', function(e) {
 			//显示启动导航
 			mui.openWindow({

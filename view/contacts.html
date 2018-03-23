@@ -165,7 +165,7 @@
 						        </a>
 							</li>
 						</ul>
-						<ul class="mui-table-view">
+						<ul class="mui-table-view contact-list">
 							<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
 							<li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item">
 								<img class="contact-img" src="../img/logo.png" alt="" style='vertical-align: middle;margin-right: 10px;' />阿克苏机场
@@ -420,6 +420,16 @@
 					$('.mui-indexed-list-bar').css('display', 'none')
 				}).blur(function() {
 					$('.mui-indexed-list-bar').css('display', 'table')
+				})
+				
+				// 跳转到联系人详情页面
+				mui('.contact-list').on('tap', 
+				'.mui-indexed-list-item', function() {
+					mui.openWindow({
+						url: 'friend-info.html',
+						id: 'friend-info.html',
+						extras: {}
+					})
 				})
 			}()
 			

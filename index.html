@@ -70,7 +70,7 @@
 				<!--<span class="mui-icon mui-icon-left-nav"></span>-->
 			</button>
 		    <!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
-		    <h1 class="mui-title">我的聊天</h1>
+		    <h1 class="mui-title" @click='open'>我的聊天</h1>
 		    <a class="mui-pull-right" href="#add" id='open-add'>
 				<span class="mui-icon mui-icon mui-icon-plusempty" style='color: rgb(16,16,16);font-size: 28px;'></span>
 			</a>
@@ -92,7 +92,7 @@
 				    </li>
 				    <li class="mui-table-view-cell mui-media">
 				        <a href="javascript:;">
-				            <img class="mui-media-object mui-pull-left" src="./img/logo.png" width='60' height="60">
+				            <img class="mui-media-object mui-pull-left" src="./img/head-img1.jpg" width='60' height="60">
 				            <div class="mui-media-body">
 				               	<span class="nickname">幸福</span><span class="time mui-pull-right">昨天</span>
 				                <p class="mui-ellipsis">想要这样一间小木屋.</p>
@@ -179,7 +179,7 @@
 				data: function(){
 					return {
 						list: {
-							imgUrl: './img/logo.png',
+							imgUrl: './img/head-img2.jpg',
 							chatName: 'Good',
 							lastMsg: str,
 							time: '03-18 20:26'
@@ -190,9 +190,9 @@
 
 				},
 				methods: {
-//					keyHide: function() {
-//						$('.mui-bar-tab').css('display', 'none')
-//					}
+					open: function() {
+						console.log('1')
+					}
 				},
 				
 				mounted: function(){
@@ -318,7 +318,9 @@
 				components: {
 					'chat-list': chatList
 				}
-			})
+			});
+			
+			
 		}(document);
     </script>
 </body>
